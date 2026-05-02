@@ -1,0 +1,269 @@
+/* ============================================================
+   WaggonWerk Design Tokens
+   Industrial steampunk × German engineering
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- COLOR ---------- */
+
+  /* Neutrals — the factory floor */
+  --ww-coal:        #1A1A1A;
+  --ww-iron:        #2B2B2B;   /* primary surface */
+  --ww-steel-900:   #232323;
+  --ww-steel-700:   #3D3D3D;
+  --ww-steel-500:   #6B6B6B;
+  --ww-steel-300:   #A8A8A8;
+  --ww-steel-100:   #D7D2C8;   /* warm light steel, almost paper */
+  --ww-bone:        #E8E2D5;   /* blueprint paper / cream */
+  --ww-bone-dim:    #D8D1C0;
+
+  /* Blueprint */
+  --ww-blueprint:        #1A365D;
+  --ww-blueprint-deep:   #112746;
+  --ww-blueprint-line:   #2C5282;
+  --ww-blueprint-line-faint: rgba(44, 82, 130, 0.20);
+
+  /* Machined metals — the ornament */
+  --ww-copper:      #B87333;   /* primary metallic */
+  --ww-copper-dark: #8C5526;
+  --ww-copper-deep: #5E3818;
+  --ww-brass:       #C9A961;   /* secondary metallic / hover */
+  --ww-brass-light: #DCC084;
+  --ww-patina:      #5B7B7A;   /* verdigris */
+
+  /* Signal — DB-red, the only chromatic */
+  --ww-signal:        #C50F1F;
+  --ww-signal-deep:   #9E0C19;
+  --ww-signal-bright: #E0263A;
+
+  /* Semantic shorthands */
+  --ww-bg:           var(--ww-iron);
+  --ww-bg-deep:      var(--ww-coal);
+  --ww-bg-blueprint: var(--ww-blueprint);
+  --ww-bg-paper:     var(--ww-bone);
+
+  --ww-fg:           var(--ww-steel-100);   /* default text on dark */
+  --ww-fg-strong:    #FFFFFF;
+  --ww-fg-dim:       var(--ww-steel-300);
+  --ww-fg-faint:     var(--ww-steel-500);
+  --ww-fg-on-paper:  var(--ww-iron);
+
+  --ww-accent:       var(--ww-copper);
+  --ww-accent-hover: var(--ww-brass);
+  --ww-action:       var(--ww-signal);
+  --ww-action-hover: var(--ww-signal-bright);
+
+  --ww-border:       rgba(255, 255, 255, 0.08);
+  --ww-border-strong: rgba(255, 255, 255, 0.16);
+  --ww-rule:         rgba(184, 115, 51, 0.40);  /* copper hairline */
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  --ww-font-display: 'Oswald', 'DIN Alternate', 'Impact', sans-serif;
+  --ww-font-body:    'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+  --ww-font-mono:    'JetBrains Mono', 'IBM Plex Mono', Consolas, monospace;
+
+  /* Type scale (1.25 ratio, mechanical) */
+  --ww-text-xs:   12px;
+  --ww-text-sm:   14px;
+  --ww-text-base: 17px;
+  --ww-text-md:   20px;
+  --ww-text-lg:   24px;
+  --ww-text-xl:   32px;
+  --ww-text-2xl:  44px;
+  --ww-text-3xl:  60px;
+  --ww-text-4xl:  84px;
+  --ww-text-5xl:  120px;
+
+  /* Tracking */
+  --ww-track-tight:  -0.01em;
+  --ww-track-normal: 0;
+  --ww-track-wide:   0.08em;
+  --ww-track-mega:   0.18em;   /* technical labels */
+
+  /* ---------- SPACING (4px base grid) ---------- */
+
+  --ww-space-1:  4px;
+  --ww-space-2:  8px;
+  --ww-space-3:  12px;
+  --ww-space-4:  16px;
+  --ww-space-5:  24px;
+  --ww-space-6:  32px;
+  --ww-space-7:  48px;
+  --ww-space-8:  64px;
+  --ww-space-9:  96px;
+  --ww-space-10: 128px;
+
+  /* ---------- RADII (sharp & mechanical) ---------- */
+
+  --ww-radius-0: 0px;       /* riveted plates */
+  --ww-radius-1: 2px;       /* default — buttons, fields */
+  --ww-radius-2: 4px;       /* small chips */
+  --ww-radius-pill: 999px;  /* stamped tags only */
+
+  /* ---------- BORDERS ---------- */
+
+  --ww-border-hair: 1px solid var(--ww-border);
+  --ww-border-rule: 1px solid var(--ww-rule);
+  --ww-border-strong-line: 1px solid var(--ww-border-strong);
+  --ww-border-copper: 1px solid var(--ww-copper);
+
+  /* ---------- SHADOWS (crisp, mechanical) ---------- */
+
+  --ww-shadow-stamp:
+    0 1px 0 rgba(255,255,255,0.04),
+    0 2px 0 rgba(0,0,0,0.40),
+    0 6px 14px rgba(0,0,0,0.35);
+
+  --ww-shadow-plate:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 -1px 0 rgba(0,0,0,0.40) inset,
+    0 2px 0 rgba(0,0,0,0.40),
+    0 10px 24px rgba(0,0,0,0.45);
+
+  --ww-shadow-press:
+    inset 0 2px 4px rgba(0,0,0,0.55),
+    inset 0 -1px 0 rgba(255,255,255,0.04);
+
+  --ww-shadow-card:
+    0 1px 0 rgba(255,255,255,0.04),
+    0 8px 18px rgba(0,0,0,0.40);
+
+  --ww-shadow-card-hover:
+    0 1px 0 rgba(255,255,255,0.06),
+    0 14px 28px rgba(0,0,0,0.50);
+
+  /* ---------- MOTION ---------- */
+
+  --ww-ease-in:  cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ww-ease-out: cubic-bezier(0.6, 0,   0.4, 1);
+  --ww-dur-micro:  120ms;
+  --ww-dur-base:   200ms;
+  --ww-dur-panel:  360ms;
+
+  /* ---------- BACKGROUNDS ---------- */
+
+  /* Brushed steel: a faint horizontal grain on the iron base */
+  --ww-bg-brushed:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.02) 0%,
+      rgba(0,0,0,0)         50%,
+      rgba(0,0,0,0.04)     100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent             1px,
+      transparent             3px
+    ),
+    var(--ww-iron);
+
+  /* Blueprint grid */
+  --ww-bg-blueprint-grid:
+    linear-gradient(rgba(44,82,130,0.20) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(44,82,130,0.20) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(rgba(44,82,130,0.35) 1px, transparent 1px) 0 0 / 96px 96px,
+    linear-gradient(90deg, rgba(44,82,130,0.35) 1px, transparent 1px) 0 0 / 96px 96px,
+    var(--ww-blueprint);
+
+  /* Engineering paper / bone */
+  --ww-bg-paper-grid:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) 0 0 / 16px 16px,
+    var(--ww-bone);
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   ============================================================ */
+
+.ww {
+  font-family: var(--ww-font-body);
+  font-size: var(--ww-text-base);
+  line-height: 1.6;
+  color: var(--ww-fg);
+  background: var(--ww-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ww-h1, .ww h1 {
+  font-family: var(--ww-font-display);
+  font-weight: 700;
+  font-size: var(--ww-text-3xl);
+  line-height: 1.05;
+  letter-spacing: var(--ww-track-tight);
+  color: var(--ww-fg-strong);
+  margin: 0;
+}
+
+.ww-h2, .ww h2 {
+  font-family: var(--ww-font-display);
+  font-weight: 600;
+  font-size: var(--ww-text-2xl);
+  line-height: 1.1;
+  letter-spacing: var(--ww-track-tight);
+  color: var(--ww-fg-strong);
+  margin: 0;
+}
+
+.ww-h3, .ww h3 {
+  font-family: var(--ww-font-display);
+  font-weight: 600;
+  font-size: var(--ww-text-xl);
+  line-height: 1.2;
+  letter-spacing: var(--ww-track-normal);
+  color: var(--ww-fg-strong);
+  margin: 0;
+}
+
+.ww-eyebrow {
+  font-family: var(--ww-font-display);
+  font-weight: 500;
+  font-size: var(--ww-text-xs);
+  letter-spacing: var(--ww-track-mega);
+  text-transform: uppercase;
+  color: var(--ww-copper);
+}
+
+.ww-label {
+  font-family: var(--ww-font-display);
+  font-weight: 500;
+  font-size: var(--ww-text-sm);
+  letter-spacing: var(--ww-track-wide);
+  text-transform: uppercase;
+  color: var(--ww-fg-dim);
+}
+
+.ww-p, .ww p {
+  font-family: var(--ww-font-body);
+  font-size: var(--ww-text-base);
+  line-height: 1.65;
+  color: var(--ww-fg);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.ww-mono, .ww code, .ww pre {
+  font-family: var(--ww-font-mono);
+  font-size: 0.92em;
+  font-feature-settings: 'tnum' 1;
+}
+
+.ww-spec {
+  font-family: var(--ww-font-mono);
+  font-size: var(--ww-text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ww-brass);
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Numerals: tabular wherever they sit in a column */
+.ww-num {
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
