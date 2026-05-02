@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  waggonwerk:
+    # Image tag is replaced by GitHub Actions in the 'deploy' branch with the commit SHA.
+    image: ghcr.io/korjavin/waggonwerk:latest
+    container_name: waggonwerk
+    networks:
+      - traefik_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${TRAEFIK_NETWORK_NAME:-traefik_default}"
+      - "traefik.http.routers.waggonwerk.rule=Host(`${HOSTNAME}`)"
+      - "traefik.http.routers.waggonwerk.entrypoints=websecure"
+      - "traefik.http.routers.waggonwerk.tls.certresolver=myresolver"
+      - "traefik.http.services.waggonwerk.loadbalancer.server.port=8080"
+    volumes:
+      - waggonwerk-data:/data
+    environment:
+      - PORT=8080
+      - DATA_DIR=/data
+    restart: unless-stopped
+
+networks:
+  traefik_network:
+    external: true
+    name: ${TRAEFIK_NETWORK_NAME:-traefik_default}
+
+volumes:
+  waggonwerk-data:
