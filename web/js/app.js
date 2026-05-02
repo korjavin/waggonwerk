@@ -83,9 +83,6 @@ function footer() {
             WAGGON<span class="a">WERK</span>
           </div>
           <p>${esc(t('foot_blurb'))}</p>
-          <div style="margin-top:16px;font-family:var(--ww-font-mono);font-size:11px;color:var(--ww-brass);letter-spacing:0.18em">
-            № WW-DE · UID DE 327 991 042
-          </div>
         </div>
         <div>
           <h4>${esc(t('foot_h_catalog'))}</h4>
@@ -611,7 +608,6 @@ function contactView() {
         <div class="ww-contact-aside">
           <div class="ww-contact-card">
             <h4>${esc(t('contact_aside_h'))}</h4>
-            <div class="addr">${esc(t('contact_aside_addr'))}</div>
             <a class="em" href="mailto:${esc(t('contact_aside_email'))}">${esc(t('contact_aside_email'))}</a>
           </div>
           <div class="ww-contact-card">
@@ -622,10 +618,10 @@ function contactView() {
           <div class="ww-contact-card" style="background:linear-gradient(180deg,#1A365D 0%,#112746 100%);border-color:#0a1a2e;color:#fff">
             <h4 style="color:var(--ww-brass-light)">Direct lines</h4>
             <div style="font-family:var(--ww-font-mono);font-size:13px;line-height:1.85;color:rgba(255,255,255,0.92)">
-              Replacements →&nbsp;&nbsp;<span style="color:var(--ww-brass-light)">ersatz@waggonwerk.de</span><br>
-              Commissions →&nbsp;<span style="color:var(--ww-brass-light)">auftrag@waggonwerk.de</span><br>
-              Care &amp; access →&nbsp;<span style="color:var(--ww-brass-light)">pflege@waggonwerk.de</span><br>
-              Press →&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--ww-brass-light)">presse@waggonwerk.de</span>
+              Replacements →&nbsp;&nbsp;<span style="color:var(--ww-brass-light)">ersatz@wandergeek.org</span><br>
+              Commissions →&nbsp;<span style="color:var(--ww-brass-light)">auftrag@wandergeek.org</span><br>
+              Care &amp; access →&nbsp;<span style="color:var(--ww-brass-light)">pflege@wandergeek.org</span><br>
+              Press →&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--ww-brass-light)">presse@wandergeek.org</span>
             </div>
           </div>
         </div>
