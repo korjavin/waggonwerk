@@ -132,8 +132,6 @@ const I18N_STRINGS = {
     about_eyebrow: '№ 00 · The workshop',
     about_title_a: 'Original designs,', about_title_b: 'one line,', about_title_c: 'printed to order.',
     about_lede: 'WaggonWerk makes 3D-printed pieces for board games: a steampunk train set compatible with Ticket to Ride, and custom pieces for any game that passes review.',
-    about_photo_ph: 'Photo: the workbench',
-    about_photo_cap: 'THE WORKSHOP · WAGGONWERK',
     about_h_who: 'Why this exists',
     about_b_who: 'Every piece is designed in-house — the set exists because we wanted a steampunk board and nobody sold one.',
     about_h_how: 'How it’s made',

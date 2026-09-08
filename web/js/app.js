@@ -32,7 +32,6 @@ const btn = (variant, label, action, extra) => {
 };
 const navBtn = (variant, label, view) => btn(variant, esc(label), 'nav', { view });
 const back = () => `<a class="ww-blogpage-back" data-action="nav" data-view="home">${esc(t('back_home'))}</a>`;
-const photo = (ph) => `<div class="ww-photo">${esc(ph)}</div>`;
 const img = (name, alt) => `<img class="ww-render" src="/img/${name}.png" alt="${esc(alt)}" loading="lazy">`;
 const RENDERS = { classic: 'steam-tank', modernist: 'modernist-head', voyager: 'voyager-loco' };
 const errStyle = (cond) => cond ? 'style="border-color:var(--ww-signal)"' : '';
@@ -481,14 +480,8 @@ function aboutView() {
     </div>
   </section>
   <section class="container" style="padding-top:48px">
-    <div class="ww-about-maker">
-      <div class="ww-about-photo">
-        ${photo(t('about_photo_ph'))}
-        <div class="cap">${esc(t('about_photo_cap'))}</div>
-      </div>
-      <div class="ww-about-detail-grid" style="grid-template-columns:1fr">
-        ${detail.map(([h, b]) => `<div class="ww-about-block"><h3>${esc(t(h))}</h3><p>${esc(t(b))}</p></div>`).join('')}
-      </div>
+    <div class="ww-about-detail-grid">
+      ${detail.map(([h, b]) => `<div class="ww-about-block"><h3>${esc(t(h))}</h3><p>${esc(t(b))}</p></div>`).join('')}
     </div>
     <div style="display:flex;gap:12px;margin:56px 0 80px">
       ${navBtn('primary', t('about_cta_custom'), 'custom')}
