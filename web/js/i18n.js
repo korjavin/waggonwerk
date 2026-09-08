@@ -40,6 +40,8 @@ const I18N_STRINGS = {
     hw2_desc: 'Each batch is printed in PLA and every set is inspected before packing.',
     hw3_title: 'Shipped via USPS',
     hw3_desc: 'Tracked USPS · 1–2 week handling · U.S. addresses for now.',
+    print_photo_alt: 'Two grey PLA test prints: a steampunk locomotive and a Voyager bullet-nose locomotive',
+    print_photo_cap: 'FIRST TEST PRINTS · STEAMPUNK LOCO + VOYAGER LOCO · GREY PLA, UNPAINTED',
 
     // Custom teaser
     cust_eyebrow: '№ 04 · Custom pieces',

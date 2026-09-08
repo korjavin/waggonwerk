@@ -175,6 +175,10 @@ function howItWorks() {
             </div>
           </div>`).join('')}
       </div>
+      <figure class="ww-print-photo">
+        <img src="/img/printed-locos.jpg" alt="${esc(t('print_photo_alt'))}" loading="lazy">
+        <figcaption>${esc(t('print_photo_cap'))}</figcaption>
+      </figure>
     </div>
   </section>`;
 }

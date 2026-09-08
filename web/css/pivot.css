@@ -19,3 +19,6 @@ a.ww-btn{text-decoration:none;display:inline-flex;align-items:center}
 .ww-notify-preview .ww-render{width:180px;height:auto;filter:drop-shadow(0 8px 12px rgba(0,0,0,0.5))}
 .ww-notify-preview span{font-family:var(--ww-font-mono);font-size:10px;letter-spacing:0.18em;color:var(--ww-brass)}
 .ww-hero-specimen .tag{position:absolute;bottom:-28px;right:0;font-family:var(--ww-font-mono);font-size:10px;color:var(--ww-brass);letter-spacing:0.18em}
+.ww-print-photo{margin:18px 0 0;border:1px solid rgba(184,115,51,0.30);background:#fafaf3;box-shadow:0 4px 12px rgba(43,43,43,0.08);padding:12px}
+.ww-print-photo img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}
+.ww-print-photo figcaption{margin-top:10px;font-family:var(--ww-font-mono);font-size:10px;letter-spacing:0.18em;color:var(--ww-copper-dark)}
