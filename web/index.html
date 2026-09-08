@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WaggonWerk — Berlin · 2026</title>
+  <title>WaggonWerk — custom 3D-printed game pieces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WaggonWerk — a one-boy manufaktur for custom 3D-printed Ticket to Ride wagons. Berlin · 2026.">
+  <meta name="description" content="Custom 3D-printed pieces for the games you already love. Steampunk train sets compatible with Ticket to Ride, plus custom pieces for any board game. Printed and shipped from the U.S.">
   <link rel="stylesheet" href="/css/colors_and_type.css">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/extras.css">
+  <link rel="stylesheet" href="/css/pivot.css">
+  <script>
+  // Checkout URLs — TODO: replace with real Stripe Payment Links per product
+  window.WW_CHECKOUT = { single: '#', bundle: '#' };
+  // Tracking shim — fires to whichever pixels are loaded; safe no-op otherwise.
+  // TODO before ad spend: paste Meta Pixel, Reddit Pixel, and GA4 base codes here with real IDs,
+  // then verify Lead / ViewContent / InitiateCheckout in each Events Manager.
+  window.track = function (ev, data) {
+    try {
+      if (window.fbq) fbq('track', ev, data);
+      if (window.rdt) rdt('track', ev);
+      if (window.gtag) gtag('event', ev, data);
+    } catch (e) {}
+  };
+  </script>
 </head>
 <body>
   <div id="root"></div>

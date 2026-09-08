@@ -1,4 +1,4 @@
-// WaggonWerk static server with notify + contact endpoints.
+// WaggonWerk static server with notify, contact and custom-request endpoints.
 // Single binary, no third-party Go dependencies.
 
 package main
@@ -37,10 +37,25 @@ type contactEntry struct {
 	When    time.Time `json:"when"`
 }
 
+// requestEntry is a custom-piece inquiry (the second conversion event).
+type requestEntry struct {
+	Game     string    `json:"game"`
+	Desc     string    `json:"desc"`
+	Link     string    `json:"link"`
+	Dims     string    `json:"dims"`
+	Qty      string    `json:"qty"`
+	Budget   string    `json:"budget"`
+	Deadline string    `json:"deadline"`
+	Email    string    `json:"email"`
+	Zip      string    `json:"zip"`
+	When     time.Time `json:"when"`
+}
+
 type store struct {
 	mu       sync.Mutex
 	notifies []notifyEntry
 	contacts []contactEntry
+	requests []requestEntry
 	dataDir  string
 }
 
@@ -53,6 +68,9 @@ func (s *store) load() {
 	}
 	if b, err := os.ReadFile(filepath.Join(s.dataDir, "contact.json")); err == nil {
 		_ = json.Unmarshal(b, &s.contacts)
+	}
+	if b, err := os.ReadFile(filepath.Join(s.dataDir, "requests.json")); err == nil {
+		_ = json.Unmarshal(b, &s.requests)
 	}
 }
 
@@ -92,6 +110,14 @@ func (s *store) addContact(c contactEntry) {
 	c.When = time.Now().UTC()
 	s.contacts = append(s.contacts, c)
 	go s.persist("contact.json", s.contacts)
+}
+
+func (s *store) addRequest(r requestEntry) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	r.When = time.Now().UTC()
+	s.requests = append(s.requests, r)
+	go s.persist("requests.json", s.requests)
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {
@@ -148,14 +174,45 @@ func handleContact(s *store) http.HandlerFunc {
 		body.Country = clip(body.Country, 100)
 		body.Topic = clip(body.Topic, 64)
 		body.Message = clip(body.Message, 10000)
-		if body.Name == "" || body.Message == "" || !emailRE.MatchString(body.Email) {
+		if body.Message == "" || !emailRE.MatchString(body.Email) {
 			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "missing fields"})
 			return
 		}
 		s.addContact(body)
 		log.Printf("contact: topic=%s from=%q <%s> country=%q (%d chars)",
 			body.Topic, body.Name, body.Email, body.Country, len(body.Message))
-		writeJSON(w, http.StatusOK, map[string]any{"ok": true, "ref": "WW-K-2026-0413"})
+		writeJSON(w, http.StatusOK, map[string]any{"ok": true})
+	}
+}
+
+func handleRequest(s *store) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		var body requestEntry
+		if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 1<<16)).Decode(&body); err != nil {
+			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "bad json"})
+			return
+		}
+		body.Game = clip(body.Game, 200)
+		body.Desc = clip(body.Desc, 10000)
+		body.Link = clip(body.Link, 2000)
+		body.Dims = clip(body.Dims, 200)
+		body.Qty = clip(body.Qty, 50)
+		body.Budget = clip(body.Budget, 100)
+		body.Deadline = clip(body.Deadline, 100)
+		body.Email = clip(body.Email, 254)
+		body.Zip = clip(body.Zip, 20)
+		if body.Game == "" || body.Desc == "" || body.Qty == "" || body.Zip == "" || !emailRE.MatchString(body.Email) {
+			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "missing fields"})
+			return
+		}
+		s.addRequest(body)
+		log.Printf("request: game=%q qty=%q from=<%s> zip=%q (%d chars)",
+			body.Game, body.Qty, body.Email, body.Zip, len(body.Desc))
+		writeJSON(w, http.StatusOK, map[string]any{"ok": true})
 	}
 }
 
@@ -184,6 +241,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/notify", handleNotify(s))
 	mux.HandleFunc("/api/contact", handleContact(s))
+	mux.HandleFunc("/api/request", handleRequest(s))
 	mux.HandleFunc("/api/health", func(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
 	})

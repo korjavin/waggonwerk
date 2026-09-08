@@ -49,7 +49,7 @@ function steamLoco(body, stroke) {
   </svg>`;
 }
 
-function berlinerLoco(body, stroke, accent) {
+function modernLoco(body, stroke, accent) {
   body = body || '#FAFAF3'; stroke = stroke || '#1A1A1A'; accent = accent || '#C50F1F';
   return `
   <svg viewBox="0 0 400 160" style="width:100%;max-width:420px" aria-hidden="true">
@@ -84,7 +84,7 @@ function berlinerLoco(body, stroke, accent) {
     </g>
     <line x1="0" y1="14" x2="400" y2="14" stroke="${stroke}" stroke-width="0.8" stroke-dasharray="2 4"/>
     <rect x="170" y="106" width="60" height="14" fill="${body}" stroke="${stroke}"/>
-    <text x="200" y="116" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="9" fill="${stroke}" letter-spacing="2">S-BAHN</text>
+    <text x="200" y="116" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="9" fill="${stroke}" letter-spacing="2">WW</text>
     <g fill="${body}" stroke="${stroke}" stroke-width="1.2">
       <rect x="50" y="124" width="68" height="10"/>
       <rect x="282" y="124" width="68" height="10"/>
@@ -158,7 +158,7 @@ function locoSpecimen(line, scale) {
   };
   const p = palettes[line] || palettes.classic;
   let svg;
-  if (line === 'modernist')      svg = berlinerLoco(p[0], p[1], p[2]);
+  if (line === 'modernist')      svg = modernLoco(p[0], p[1], p[2]);
   else if (line === 'voyager')   svg = shinkansenLoco(p[0], p[1], p[2]);
   else                           svg = steamLoco(p[0], p[1]);
   return `<div style="width:100%;max-width:${420 * scale}px;display:block;margin:0 auto">${svg}</div>`;
