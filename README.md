@@ -26,9 +26,9 @@ container has no filesystem dependencies on the design files.
 └── web/
     ├── index.html
     ├── css/             # colors_and_type, styles, extras, pivot (from design)
+    ├── img/             # 3D renders of the pieces (from models/renders, 900px)
     └── js/
         ├── i18n.js      # all site copy (EN only)
-        ├── locos.js     # SVG locomotive specimens
         └── app.js       # routing + views + event handling
 ```
 

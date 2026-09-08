@@ -33,6 +33,8 @@ const btn = (variant, label, action, extra) => {
 const navBtn = (variant, label, view) => btn(variant, esc(label), 'nav', { view });
 const back = () => `<a class="ww-blogpage-back" data-action="nav" data-view="home">${esc(t('back_home'))}</a>`;
 const photo = (ph) => `<div class="ww-photo">${esc(ph)}</div>`;
+const img = (name, alt) => `<img class="ww-render" src="/img/${name}.png" alt="${esc(alt)}" loading="lazy">`;
+const RENDERS = { classic: 'steam-tank', modernist: 'modernist-head', voyager: 'voyager-loco' };
 const errStyle = (cond) => cond ? 'style="border-color:var(--ww-signal)"' : '';
 const errLine = (msg) => msg ? `<div class="ww-spec" style="color:var(--ww-signal);margin-bottom:12px">${esc(msg)}</div>` : '';
 
@@ -102,7 +104,7 @@ function hero() {
         </div>
       </div>
       <div class="ww-hero-specimen">
-        ${photo(t('hero_photo_ph'))}
+        <img class="ww-render ww-hero-render" src="/img/steam-loco.png" alt="${esc(t('hero_img_alt'))}">
         <div class="tag">${esc(t('hero_tag'))}</div>
       </div>
     </div>
@@ -131,7 +133,7 @@ function linesShowcase() {
               <p class="desc">${esc(t(l.descKey))}</p>
             </div>
             <div style="margin-top:24px">
-              ${locoSpecimen(l.id, 0.7)}
+              <div class="ww-line-img">${img(RENDERS[l.id], t(l.titleKey))}</div>
               <div class="meta" style="margin-top:16px">
                 ${l.live
                   ? `<span>· ${esc(t('line_steampunk_meta'))}</span><span>· $${PRODUCTS.single.price} / set</span><span style="color:var(--ww-copper)">· ${esc(t('line_shop'))}</span>`
@@ -209,6 +211,10 @@ function notifyBand() {
           <div class="ww-notify-meta">
             <span>${esc(t('notify_meta1'))}</span><span>${esc(t('notify_meta2'))}</span><span>${esc(t('notify_meta3'))}</span>
           </div>
+          <div class="ww-notify-preview">
+            ${img('voyager-side', t('line_voyager_title'))}
+            <span>${esc(t('notify_preview_cap'))}</span>
+          </div>
         </div>
         <div>
           ${n.submitted ? `
@@ -239,8 +245,8 @@ function notifyBand() {
 
 function catalog() {
   const items = [
-    { ...PRODUCTS.single, qty: 'single', tag: '45 pcs' },
-    { ...PRODUCTS.bundle, qty: 'bundle', tag: '225 pcs' },
+    { ...PRODUCTS.single, qty: 'single', tag: '45 pcs',  img: 'steam-loco' },
+    { ...PRODUCTS.bundle, qty: 'bundle', tag: '225 pcs', img: 'steam-chibi' },
   ];
   return `
   <section class="ww-section">
@@ -252,7 +258,7 @@ function catalog() {
       <div class="ww-catalog">
         ${items.map(it => `
           <div class="ww-cat-card" data-action="pick" data-qty="${it.qty}">
-            <div class="ww-cat-img">${locoSpecimen('classic', 0.7)}</div>
+            <div class="ww-cat-img">${img(it.img, it.title)}</div>
             <div style="display:flex;justify-content:space-between;align-items:center">
               <span class="ww-cat-pn">№ ${esc(it.pn)}</span>${badge('brass', it.tag)}
             </div>
@@ -288,8 +294,8 @@ function configuratorView() {
           <div class="ww-config-corner tr">SHEET 01 / 01</div>
           <div class="ww-config-corner bl">${esc(p.pieces)}</div>
           <div class="ww-config-corner br">UNPAINTED PLA</div>
-          <div style="width:85%">
-            ${isBundle ? `<div style="display:grid;gap:4px">${[0,1,2,3,4].map(() => steamLoco()).join('')}</div>` : steamLoco()}
+          <div class="ww-config-renders">
+            ${['steam-loco', 'steam-tank', 'steam-chibi'].map(n => img(n, p.title)).join('')}
           </div>
         </div>
         <div class="ww-spec-sheet">

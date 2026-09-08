@@ -16,7 +16,7 @@ const I18N_STRINGS = {
     hero_cta_custom: 'Request a custom piece',
     hero_disclaimer: 'Unpainted by design. We print, you paint — half the fun is the brush.',
     hero_corner: 'SHEET 01 · WAGGONWERK',
-    hero_photo_ph: 'Photo: the steampunk set on a real board',
+    hero_img_alt: 'Steampunk locomotive from the WaggonWerk set, 3D render',
     hero_tag: 'STEAMPUNK SET · 45 PIECES · UNPAINTED PLA',
 
     // Lines
@@ -67,6 +67,7 @@ const I18N_STRINGS = {
     notify_meta1: 'No newsletter',
     notify_meta2: 'One email per launch',
     notify_meta3: 'Unsubscribe = reply',
+    notify_preview_cap: 'THE VOYAGER · WORK IN PROGRESS',
     notify_err: 'valid email please',
     notify_err_net: 'network error · please try again',
 
