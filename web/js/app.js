@@ -33,7 +33,7 @@ const btn = (variant, label, action, extra) => {
 const navBtn = (variant, label, view) => btn(variant, esc(label), 'nav', { view });
 const back = () => `<a class="ww-blogpage-back" data-action="nav" data-view="home">${esc(t('back_home'))}</a>`;
 const img = (name, alt) => `<img class="ww-render" src="/img/${name}.png" alt="${esc(alt)}" loading="lazy">`;
-const RENDERS = { classic: 'steam-tank', modernist: 'modernist-head', voyager: 'voyager-loco' };
+const RENDERS = { classic: 'set-steam', modernist: 'set-modernist', voyager: 'set-voyager' };
 const errStyle = (cond) => cond ? 'style="border-color:var(--ww-signal)"' : '';
 const errLine = (msg) => msg ? `<div class="ww-spec" style="color:var(--ww-signal);margin-bottom:12px">${esc(msg)}</div>` : '';
 
@@ -103,7 +103,7 @@ function hero() {
         </div>
       </div>
       <div class="ww-hero-specimen">
-        <img class="ww-render ww-hero-render" src="/img/steam-loco.png" alt="${esc(t('hero_img_alt'))}">
+        <img class="ww-render ww-hero-render" src="/img/set-steam.png" alt="${esc(t('hero_img_alt'))}">
         <div class="tag">${esc(t('hero_tag'))}</div>
       </div>
     </div>
@@ -293,9 +293,7 @@ function configuratorView() {
           <div class="ww-config-corner tr">SHEET 01 / 01</div>
           <div class="ww-config-corner bl">${esc(p.pieces)}</div>
           <div class="ww-config-corner br">UNPAINTED PLA</div>
-          <div class="ww-config-renders">
-            ${['steam-loco', 'steam-tank', 'steam-chibi'].map(n => img(n, p.title)).join('')}
-          </div>
+          <div class="ww-config-renders">${img('set-steam', p.title)}</div>
         </div>
         <div class="ww-spec-sheet">
           ${eyebrow(`The Steampunk Set · ${p.pn}`)}

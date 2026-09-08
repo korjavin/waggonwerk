@@ -16,7 +16,7 @@ const I18N_STRINGS = {
     hero_cta_custom: 'Request a custom piece',
     hero_disclaimer: 'Unpainted by design. We print, you paint — half the fun is the brush.',
     hero_corner: 'SHEET 01 · WAGGONWERK',
-    hero_img_alt: 'Steampunk locomotive from the WaggonWerk set, 3D render',
+    hero_img_alt: 'The steampunk set: 3 locomotives and 11 wagons, 3D render',
     hero_tag: 'STEAMPUNK SET · 45 PIECES · UNPAINTED PLA',
 
     // Lines
