@@ -3,7 +3,7 @@ version: "3.8"
 services:
   waggonwerk:
     # Image tag is replaced by GitHub Actions in the 'deploy' branch with the commit SHA.
-    image: ghcr.io/korjavin/waggonwerk:latest
+    image: ghcr.io/korjavin/waggonwerk:500c8d2f9ac42cb24d1ba05730ace2f6c467f52e
     container_name: waggonwerk
     networks:
       - traefik_network
