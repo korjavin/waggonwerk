@@ -1,0 +1,4 @@
+.DS_Store
+.claude/
+# 3D models live in the private repo korjavin/waggonwerk-models (nested checkout)
+models/
